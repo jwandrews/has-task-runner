@@ -4,38 +4,42 @@ import m from '../index.js';
 
 const task = 'gulp';
 
-test( 'taskfile exists, pkg exists', async t => {
+test( 'taskfile exists, pkg exists', t => {
   const projectPath = path.resolve( `fixtures/${task}/taskfile` );
-  const tr = await m( task, { path: projectPath });
-
-  t.is( tr.name, task );
-  t.true( tr.runnerExists );
-  t.true( tr.pkgExists );
+  m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
+    t.plan( 3 );
+    t.is( name, task );
+    t.true( runnerExists );
+    t.true( pkgExists );
+  });
 });
 
-test( 'taskfile exists, no pkg', async t => {
+test( 'taskfile exists, no pkg', t => {
   const projectPath = path.resolve( `fixtures/${task}/taskfile-no-pkg` );
-  const tr = await m( task, { path: projectPath });
-
-  t.is( tr.name, task );
-  t.true( tr.runnerExists );
-  t.false( tr.pkgExists );
+  m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
+    t.plan( 3 );
+    t.is( name, task );
+    t.true( runnerExists );
+    t.false( pkgExists );
+  });
 });
 
-test( 'no taskfile, no pkg', async t => {
+test( 'no taskfile, no pkg', t => {
   const projectPath = path.resolve( `fixtures/${task}/no-taskfile-no-pkg` );
-  const tr = await m( task, { path: projectPath });
-
-  t.is( tr.name, task );
-  t.false( tr.runnerExists );
-  t.false( tr.pkgExists );
+  m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
+    t.plan( 3 );
+    t.is( name, task );
+    t.false( runnerExists );
+    t.false( pkgExists );
+  });
 });
 
-test( 'no taskfile, pkg exists', async t => {
+test( 'no taskfile, pkg exists', t => {
   const projectPath = path.resolve( `fixtures/${task}/no-taskfile-pkg-exists` );
-  const tr = await m( task, { path: projectPath });
-
-  t.is( tr.name, task );
-  t.false( tr.runnerExists );
-  t.true( tr.pkgExists );
+  m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
+    t.plan( 3 );
+    t.is( name, task );
+    t.false( runnerExists );
+    t.true( pkgExists );
+  });
 });
