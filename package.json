@@ -1,0 +1,21 @@
+{
+  "name": "has-task-runner",
+  "version": "0.1.0",
+  "description": "A module to check a directory for a task runner. Currently supports Gulp, Grunt, Cake & Broccoli",
+  "main": "index.js",
+  "license": "MIT",
+  "repository": "jwandrews/has-task-runner",
+  "author": "Jeff Andrews <jeff.andrews@carpages.ca>",
+  "devDependencies": {
+    "ava": "^0.17.0",
+    "nyc": "^10.0.0"
+  },
+  "dependencies": {
+    "path-exists": "^3.0.0",
+    "resolve-pkg": "^0.2.0"
+  },
+  "scripts": {
+    "test": "ava",
+    "coverage": "nyc ava"
+  }
+}
