@@ -1,7 +1,7 @@
 {
   "name": "has-task-runner",
   "version": "0.1.0",
-  "description": "A module to check a directory for a task runner. Currently supports Gulp, Grunt, Cake & Broccoli",
+  "description": "A module to check a directory for a task runner. Currently supports Gulp & Grunt",
   "main": "index.js",
   "license": "MIT",
   "repository": "jwandrews/has-task-runner",

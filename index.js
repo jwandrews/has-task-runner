@@ -6,8 +6,7 @@ const pathExists = require( 'path-exists' );
 
 const taskRunners = {
   gulp: { name: 'Gulp', file: 'gulpfile.js', pkg: 'gulp' },
-  grunt: { name: 'Grunt', file: 'gruntfile.js', pkg: 'grunt' },
-  broccoli: { name: 'BroccoliJS', file: 'Brocfile.js', pkg: 'broccoli' }
+  grunt: { name: 'Grunt', file: 'gruntfile.js', pkg: 'grunt' }
 };
 
 module.exports = ( task, opts = {}) => {
