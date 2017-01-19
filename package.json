@@ -1,6 +1,6 @@
 {
   "name": "has-task-runner",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "A module to check a directory for a task runner. Currently supports Gulp & Grunt",
   "main": "index.js",
   "license": "MIT",
