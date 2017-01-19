@@ -39,7 +39,6 @@ test( 'no taskfile, no pkg', t => {
 
 test( 'no taskfile, pkg exists', t => {
   const projectPath = path.resolve( `fixtures/${task}/no-taskfile-pkg-exists` );
-  console.log({ projectPath });
   m( task, { path: projectPath })
     .then(({ name, runnerExists, pkgExists }) => {
       t.plan( 3 );
