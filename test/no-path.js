@@ -7,10 +7,10 @@ test( 'no path', t => {
 
   const error = t.throws(
     () => {
-      m(task, {path})
+      m( task, { path });
     },
     Error
   );
 
-  t.is( error.message, 'Cannot find path to project.');
+  t.is( error.message, 'Cannot find path to project.' );
 });

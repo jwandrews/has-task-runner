@@ -6,12 +6,12 @@ test( 'task is empty string', t => {
 
   let error = t.throws(
     () => {
-      m(task)
+      m( task );
     },
     Error
   );
 
-  t.is( error.message, 'No task runner specified.');
+  t.is( error.message, 'No task runner specified.' );
 });
 
 test( 'task is null', t => {
@@ -19,12 +19,12 @@ test( 'task is null', t => {
 
   let error = t.throws(
     () => {
-      m(task)
+      m( task );
     },
     Error
   );
 
-  t.is( error.message, 'No task runner specified.');
+  t.is( error.message, 'No task runner specified.' );
 });
 
 test( 'task is undefined', t => {
@@ -32,12 +32,12 @@ test( 'task is undefined', t => {
 
   let error = t.throws(
     () => {
-      m(task)
+      m( task );
     },
     Error
   );
 
-  t.is( error.message, 'No task runner specified.');
+  t.is( error.message, 'No task runner specified.' );
 });
 
 test( 'task is something else', t => {
@@ -45,10 +45,10 @@ test( 'task is something else', t => {
 
   let error = t.throws(
     () => {
-      m(task)
+      m( task );
     },
     Error
   );
 
-  t.is( error.message, `${task} is currently unsupported.`);
+  t.is( error.message, `${task} is currently unsupported.` );
 });
