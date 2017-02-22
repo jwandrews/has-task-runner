@@ -1,6 +1,6 @@
 'use strict';
 
-const path = require( 'path' );
+const { join } = require( 'path' );
 const resolvePkg = require( 'resolve-pkg' );
 const pathExists = require( 'path-exists' );
 
@@ -27,7 +27,7 @@ module.exports = ( task, opts = {}) => {
 
   const taskFile = taskRunners[task].file;
   const taskName = taskRunners[task].name;
-  const taskRunnerFilePath = path.join( projectPath, taskFile );
+  const taskRunnerFilePath = join( projectPath, taskFile );
   const hasTaskPkg = resolvePkg( taskRunners[task].pkg, { cwd: projectPath });
 
   return new Promise(( resolve, reject ) => {

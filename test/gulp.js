@@ -1,11 +1,13 @@
-import path from 'path';
+'use strict';
+
+import { resolve } from 'path';
 import test from 'ava';
 import m from '../index.js';
 
 const task = 'gulp';
 
 test( 'taskfile exists, pkg exists', t => {
-  const projectPath = path.resolve( `fixtures/${task}/taskfile` );
+  const projectPath = resolve( __dirname, `fixtures/${task}/taskfile` );
   m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
     t.plan( 3 );
     t.is( name, task );
@@ -15,7 +17,7 @@ test( 'taskfile exists, pkg exists', t => {
 });
 
 test( 'taskfile exists, no pkg', t => {
-  const projectPath = path.resolve( `fixtures/${task}/taskfile-no-pkg` );
+  const projectPath = resolve( __dirname, `fixtures/${task}/taskfile-no-pkg` );
   m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
     t.plan( 3 );
     t.is( name, task );
@@ -25,7 +27,7 @@ test( 'taskfile exists, no pkg', t => {
 });
 
 test( 'no taskfile, no pkg', t => {
-  const projectPath = path.resolve( `fixtures/${task}/no-taskfile-no-pkg` );
+  const projectPath = resolve( __dirname, `fixtures/${task}/no-taskfile-no-pkg` );
   m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
     t.plan( 3 );
     t.is( name, task );
@@ -35,7 +37,7 @@ test( 'no taskfile, no pkg', t => {
 });
 
 test( 'no taskfile, pkg exists', t => {
-  const projectPath = path.resolve( `fixtures/${task}/no-taskfile-pkg-exists` );
+  const projectPath = resolve( __dirname, `fixtures/${task}/no-taskfile-pkg-exists` );
   m( task, { path: projectPath }).then(({ name, runnerExists, pkgExists }) => {
     t.plan( 3 );
     t.is( name, task );
