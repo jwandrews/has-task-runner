@@ -9,12 +9,12 @@
   "devDependencies": {
     "eslint": "^3.13.1",
     "eslint-config-carpages": "^0.2.0",
-    "ava": "^0.17.0",
+    "ava": "^0.19.1",
     "nyc": "^10.0.0"
   },
   "dependencies": {
     "path-exists": "^3.0.0",
-    "resolve-pkg": "^0.2.0"
+    "resolve-pkg": "^1.0.0"
   },
   "scripts": {
     "test": "ava",
