@@ -3,16 +3,15 @@
 import test from 'ava';
 import m from '../index.js';
 
-test( 'no path', t => {
+test( 'no path', async t => {
+  t.plan( 1 );
+
   const task = '';
   const path = '/non/existent/path/';
 
-  const error = t.throws(
-    () => {
-      m( task, { path });
-    },
-    Error
-  );
-
-  t.is( error.message, 'Cannot find path to project.' );
+  try {
+    await m( task, { path });
+  } catch ( error ) {
+    t.is( error.message, 'Cannot find path to project.' );
+  }
 });
