@@ -2,7 +2,7 @@
 
 import { resolve } from 'path';
 import test from 'ava';
-import m from '../index.js';
+import m from '..';
 
 const task = 'gulp';
 
