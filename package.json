@@ -10,10 +10,10 @@
     "index.js"
   ],
   "devDependencies": {
-    "ava": "^0.24.0",
-    "eslint": "^4.12.0",
-    "eslint-config-carpages": "^1.0.2",
-    "nyc": "^11.3.0"
+    "eslint": "^5.9.0",
+    "eslint-config-carpages": "^3.1.1",
+    "ava": "^0.25.0",
+    "nyc": "^13.1.0"
   },
   "dependencies": {
     "path-exists": "^3.0.0",
