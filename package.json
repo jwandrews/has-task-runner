@@ -14,7 +14,7 @@
     "babel-eslint": "10.x",
     "eslint": "6.0.1",
     "eslint-config-carpages": "3.2.0-alpha.1",
-    "eslint-config-standard": "12.x",
+    "eslint-config-standard": "^13.0.1",
     "eslint-plugin-flowtype": "3.x",
     "eslint-plugin-import": "2.x",
     "eslint-plugin-node": "9.1.0",
