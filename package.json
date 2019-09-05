@@ -17,7 +17,7 @@
     "eslint-config-standard": "^13.0.1",
     "eslint-plugin-flowtype": "^4.0.0",
     "eslint-plugin-import": "2.x",
-    "eslint-plugin-node": "9.1.0",
+    "eslint-plugin-node": "10.0.0",
     "eslint-plugin-promise": "4.x",
     "eslint-plugin-react": "7.x",
     "eslint-plugin-requirejs": "4.0.0",
