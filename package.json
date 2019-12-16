@@ -13,7 +13,7 @@
     "ava": "^2.2.0",
     "babel-eslint": "10.x",
     "eslint": "6.6.0",
-    "eslint-config-carpages": "3.2.0-alpha.1",
+    "eslint-config-carpages": "4.0.1",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-flowtype": "^4.0.0",
     "eslint-plugin-import": "2.x",
