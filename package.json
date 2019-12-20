@@ -12,7 +12,7 @@
   "devDependencies": {
     "ava": "^2.2.0",
     "babel-eslint": "10.x",
-    "eslint": "6.x",
+    "eslint": "^6.8.0",
     "eslint-config-carpages": "4.x",
     "nyc": "^14.0.0"
   },
