@@ -14,7 +14,7 @@
     "babel-eslint": "10.x",
     "eslint": "6.x",
     "eslint-config-carpages": "^5.0.0",
-    "nyc": "^14.0.0"
+    "nyc": "^15.0.0"
   },
   "dependencies": {
     "path-exists": "^4.0.0",
@@ -26,8 +26,8 @@
   },
   "ava": {
     "files": [
-			"test/**/*",
-			"!test/fixtures"
-		]
+      "test/**/*",
+      "!test/fixtures"
+    ]
   }
 }

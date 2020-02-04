@@ -1,38 +1,38 @@
-'use strict';
+"use strict";
 
-const { join } = require( 'path' );
-const resolvePkg = require( 'resolve-pkg' );
-const pathExists = require( 'path-exists' );
+const { join } = require("path");
+const resolvePkg = require("resolve-pkg");
+const pathExists = require("path-exists");
 
 const taskRunners = {
-  gulp: { name: 'Gulp', file: 'gulpfile.js', pkg: 'gulp' },
-  grunt: { name: 'Grunt', file: 'gruntfile.js', pkg: 'grunt' }
+  gulp: { name: "Gulp", file: "gulpfile.js", pkg: "gulp" },
+  grunt: { name: "Grunt", file: "gruntfile.js", pkg: "grunt" }
 };
 
-module.exports = ( task, opts = {}) => {
+module.exports = (task, opts = {}) => {
   const projectPath = opts.path || process.cwd();
-  const tasks = Object.keys( taskRunners );
+  const tasks = Object.keys(taskRunners);
 
-  if ( !pathExists.sync( projectPath )) {
-    throw new Error( 'Cannot find path to project.' );
+  if (!pathExists.sync(projectPath)) {
+    throw new Error("Cannot find path to project.");
   }
 
-  if ( !task ) {
-    throw new Error( 'No task runner specified.' );
+  if (!task) {
+    throw new Error("No task runner specified.");
   }
 
-  if ( tasks.indexOf( task ) === -1 ) {
-    throw new Error( `${task} is currently unsupported.` );
+  if (tasks.indexOf(task) === -1) {
+    throw new Error(`${task} is currently unsupported.`);
   }
 
   const taskFile = taskRunners[task].file;
   const taskName = taskRunners[task].name;
-  const taskRunnerFilePath = join( projectPath, taskFile );
-  const hasTaskPkg = resolvePkg( taskRunners[task].pkg, { cwd: projectPath });
+  const taskRunnerFilePath = join(projectPath, taskFile);
+  const hasTaskPkg = resolvePkg(taskRunners[task].pkg, { cwd: projectPath });
 
-  return new Promise(( resolve, reject ) => {
-    pathExists( taskRunnerFilePath ).then( exists => {
-      if ( !exists ) {
+  return new Promise((resolve, reject) => {
+    pathExists(taskRunnerFilePath).then(exists => {
+      if (!exists) {
         reject({
           path: taskRunnerFilePath,
           name: task,
@@ -40,7 +40,7 @@ module.exports = ( task, opts = {}) => {
           pkgExists: !!hasTaskPkg,
           message: `No ${taskFile} file found.`
         });
-      } else if ( !hasTaskPkg ) {
+      } else if (!hasTaskPkg) {
         reject({
           path: taskRunnerFilePath,
           name: task,
@@ -58,5 +58,5 @@ module.exports = ( task, opts = {}) => {
         message: `This is a ${taskName} project.`
       });
     });
-  }).catch( err => err );
+  }).catch(err => err);
 };
