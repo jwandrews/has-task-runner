@@ -10,7 +10,7 @@
     "index.js"
   ],
   "devDependencies": {
-    "ava": "^4.0.1",
+    "ava": "^5.0.1",
     "babel-eslint": "10.x",
     "eslint": "8.x",
     "eslint-config-carpages": "^7.0.0",
