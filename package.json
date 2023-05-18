@@ -13,7 +13,7 @@
     "ava": "^5.0.1",
     "babel-eslint": "10.x",
     "eslint": "8.x",
-    "eslint-config-carpages": "^7.0.0",
+    "eslint-config-carpages": "^8.0.0",
     "nyc": "^15.0.0"
   },
   "dependencies": {
