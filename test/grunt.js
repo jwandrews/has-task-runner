@@ -1,12 +1,11 @@
-"use strict";
+import { dirname, resolve } from 'node:path';
+import test from 'ava';
+import m from '../index.js';
 
-const { resolve } = require("path");
-const test = require("ava");
-const m = require("..");
+const task = 'grunt';
+const __dirname = dirname(new URL(import.meta.url).pathname);
 
-const task = "grunt";
-
-test("taskfile exists, pkg exists", async t => {
+test('taskfile exists, pkg exists', async (t) => {
   t.plan(3);
 
   const projectPath = resolve(__dirname, `fixtures/${task}/taskfile`);
@@ -18,7 +17,7 @@ test("taskfile exists, pkg exists", async t => {
   t.true(pkgExists);
 });
 
-test("taskfile exists, no pkg", async t => {
+test('taskfile exists, no pkg', async (t) => {
   t.plan(3);
 
   const projectPath = resolve(__dirname, `fixtures/${task}/taskfile-no-pkg`);
@@ -30,7 +29,7 @@ test("taskfile exists, no pkg", async t => {
   t.false(pkgExists);
 });
 
-test("no taskfile, no pkg", async t => {
+test('no taskfile, no pkg', async (t) => {
   t.plan(3);
 
   const projectPath = resolve(__dirname, `fixtures/${task}/no-taskfile-no-pkg`);
@@ -42,13 +41,10 @@ test("no taskfile, no pkg", async t => {
   t.false(pkgExists);
 });
 
-test("no taskfile, pkg exists", async t => {
+test('no taskfile, pkg exists', async (t) => {
   t.plan(3);
 
-  const projectPath = resolve(
-    __dirname,
-    `fixtures/${task}/no-taskfile-pkg-exists`
-  );
+  const projectPath = resolve(__dirname, `fixtures/${task}/no-taskfile-pkg-exists`);
   const response = await m(task, { path: projectPath });
   const { name, runnerExists, pkgExists } = response;
 
