@@ -1,24 +1,32 @@
-"use strict";
-
-const { join } = require("path");
-const resolvePkg = require("resolve-pkg");
-const pathExists = require("path-exists");
+import { join } from 'path';
+import resolvePkg from 'resolve-pkg';
+import { pathExists, pathExistsSync } from 'path-exists';
 
 const taskRunners = {
-  gulp: { name: "Gulp", file: "gulpfile.js", pkg: "gulp" },
-  grunt: { name: "Grunt", file: "gruntfile.js", pkg: "grunt" }
+  gulp: { name: 'Gulp', file: 'gulpfile.js', pkg: 'gulp' },
+  grunt: { name: 'Grunt', file: 'gruntfile.js', pkg: 'grunt' },
 };
 
-module.exports = (task, opts = {}) => {
+class TaskRunnerError extends Error {
+  constructor({ path, name, runnerExists, pkgExists, message }) {
+    super(message);
+    this.path = path;
+    this.name = name;
+    this.runnerExists = runnerExists;
+    this.pkgExists = pkgExists;
+  }
+}
+
+export async function hasTaskRunner(task, opts = {}) {
   const projectPath = opts.path || process.cwd();
   const tasks = Object.keys(taskRunners);
 
-  if (!pathExists.sync(projectPath)) {
-    throw new Error("Cannot find path to project.");
+  if (!pathExistsSync(projectPath)) {
+    throw new Error('Cannot find path to project.');
   }
 
   if (!task) {
-    throw new Error("No task runner specified.");
+    throw new Error('No task runner specified.');
   }
 
   if (tasks.indexOf(task) === -1) {
@@ -30,33 +38,32 @@ module.exports = (task, opts = {}) => {
   const taskRunnerFilePath = join(projectPath, taskFile);
   const hasTaskPkg = resolvePkg(taskRunners[task].pkg, { cwd: projectPath });
 
-  return new Promise((resolve, reject) => {
-    pathExists(taskRunnerFilePath).then(exists => {
-      if (!exists) {
-        reject({
-          path: taskRunnerFilePath,
-          name: task,
-          runnerExists: false,
-          pkgExists: !!hasTaskPkg,
-          message: `No ${taskFile} file found.`
-        });
-      } else if (!hasTaskPkg) {
-        reject({
-          path: taskRunnerFilePath,
-          name: task,
-          runnerExists: true,
-          pkgExists: !!hasTaskPkg,
-          message: `${taskFile} found, but ${taskName} is not installed.`
-        });
-      }
-
-      resolve({
-        path: taskRunnerFilePath,
-        name: task,
-        runnerExists: true,
-        pkgExists: !!hasTaskPkg,
-        message: `This is a ${taskName} project.`
-      });
+  const exists = await pathExists(taskRunnerFilePath);
+  if (!exists) {
+    return new TaskRunnerError({
+      path: taskRunnerFilePath,
+      name: task,
+      runnerExists: false,
+      pkgExists: !!hasTaskPkg,
+      message: `No ${taskFile} file found.`,
     });
-  }).catch(err => err);
-};
+  } else if (!hasTaskPkg) {
+    return new TaskRunnerError({
+      path: taskRunnerFilePath,
+      name: task,
+      runnerExists: true,
+      pkgExists: !!hasTaskPkg,
+      message: `${taskFile} found, but ${taskName} is not installed.`,
+    });
+  }
+
+  return {
+    path: taskRunnerFilePath,
+    name: task,
+    runnerExists: true,
+    pkgExists: !!hasTaskPkg,
+    message: `This is a ${taskName} project.`,
+  };
+}
+
+export default hasTaskRunner;

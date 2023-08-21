@@ -3,22 +3,26 @@
   "version": "0.4.5",
   "description": "A module to check a directory for a task runner. Currently supports Gulp & Grunt",
   "main": "index.js",
+  "exports": "./index.js",
+  "engines": {
+    "node": ">=16"
+  },
   "license": "MIT",
   "repository": "jwandrews/has-task-runner",
   "author": "Jeff Andrews <jeff.andrews@carpages.ca>",
+  "type": "module",
   "files": [
     "index.js"
   ],
   "devDependencies": {
-    "ava": "^5.0.1",
-    "babel-eslint": "10.x",
-    "eslint": "8.x",
-    "eslint-config-carpages": "^8.1.0",
-    "nyc": "^15.0.0"
+    "ava": "^5",
+    "eslint": "^8",
+    "eslint-config-carpages": "^8",
+    "nyc": "^15"
   },
   "dependencies": {
-    "path-exists": "^5.0.0",
-    "resolve-pkg": "^2.0.0"
+    "path-exists": "^5",
+    "resolve-pkg": "^2"
   },
   "scripts": {
     "test": "ava",
