@@ -18,7 +18,7 @@
     "ava": "^6",
     "eslint": "^8",
     "eslint-config-carpages": "^8",
-    "nyc": "^15"
+    "nyc": "^17"
   },
   "dependencies": {
     "path-exists": "^5",
