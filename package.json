@@ -16,7 +16,7 @@
   ],
   "devDependencies": {
     "ava": "^6",
-    "eslint": "^8",
+    "eslint": "^9",
     "eslint-config-carpages": "^8",
     "nyc": "^15"
   },
