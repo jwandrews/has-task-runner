@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "path-exists": "^5",
-    "resolve-pkg": "^2"
+    "resolve-pkg": "^3"
   },
   "scripts": {
     "test": "ava",
